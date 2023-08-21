@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.link-text {
+  font-family: "Montserrat", sans-serif;
+}
+
+.textarea {
+  height: 200px;
+}
+
+.form-div {
+  width: 50vw;
+}
+
+.parent-box {
+  position: relative;
+  overflow-y: hidden;
+}
+
+.review-element:hover {
+  cursor: pointer;
+  background-color: #eef1ff90;
+}
+
+.name-style {
+  font-family: "Itim", cursive;
+}
+
+.review-style {
+  display: inline-block;
+  text-overflow: ellipsis;
+  max-width: 20ch;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.review-box {
+  background: linear-gradient(207deg, #faf3f065, #d0cecde6);
+}
+
+i {
+  cursor: pointer;
+}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+About Us
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/base.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/about.css') }}">
+{% endblock %}
+
+{% block body %}
+<h1 class="text-center fs-2">This is about us page</h1>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% macro review(name="Soumyadeep") %}
+<div class="d-flex border flex-row m-2 p-2 rounded-2 review-element">
+    <i class="bi bi-person-circle d-flex align-items-center" style="font-size: 32px"></i>
+    <div class="d-flex flex-column px-3">
+        <p class="name-style">{{ name }}</p>
+        <p class="d-flex flex-wrap">
+        <span class="review-style">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Aenean vitae velit vitae magna tempor molestie. 
+        Phasellus consequat eget velit at facilisis. Curabitur eu quam tempus turpis maximus gravida. 
+        Mauris iaculis dui augue, quis suscipit felis ornare eget. Morbi non tempus enim. Etiam id mattis arcu.
+        <span></p>
+    </div>
+</div>
+{% endmacro %}

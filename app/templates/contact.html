@@ -1,0 +1,70 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Contact Us
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/base.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/contact.css') }}">
+{% endblock %}
+
+
+{% block body %}
+<div class="container-lg d-flex justify-content-evenly py-3">
+    <div class="form-div">
+        <div class="contact-box">
+            <h1 class="d-flex justify-content-center">Share Your Details!</h1>
+        </div>
+        <div class="form-section p-4 container-md border rounded-2">
+            <form action="" method="POST">
+                {{ form.hidden_tag() }}
+                <!-- Form name -->
+                <div class="form-group">
+                    {{ form.name.label(class="form-control-label") }}
+                    {{ form.name(class="form-control form-control-md") }}
+                </div>
+
+                <!-- Form Phone number -->
+                <div class="form-group">
+                    {{ form.phone_number.label(class="form-control-label")}}
+                    {{ form.phone_number(class="form-control form-control-md")}}
+                </div>
+                <!-- Form email -->
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {{ form.email(class="form-control form-control-md") }}
+                </div>
+
+                <!-- Form Remark/Comment -->
+                <div class="form-group">
+                    {{ form.comment.label(class="form-control-label") }}
+                    {{ form.comment(class="form-control form-control-md textarea") }}
+                </div>
+
+                <!-- Form Submit -->
+                <div class="form-group my-4 d-flex justify-content-center">
+                    {{ form.submit(class="btn btn-primary btn-lg col-3") }}
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="sidebar border rounded-1 review-box">
+        <h3 class="px-3 mt-2">Customer Reviews</h3>
+        <div class="parent-box">
+            {% from 'includes/testimonial.j2' import review with context %}
+            {{ review() }}
+            {{ review("Arnav") }}
+            {{ review("Debasmita") }}
+            {{ review("Sana") }}
+            {{ review("Stuti") }}
+        </div>
+    </div>
+</div>
+
+{% from 'includes/web-link.j2' import contact_link with context %}
+{{ contact_link() }}
+
+{% endblock %}

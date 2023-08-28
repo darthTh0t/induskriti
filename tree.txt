@@ -1,0 +1,29 @@
+Folder PATH listing for volume New Volume
+Volume serial number is B8ED-CEC1
+Project:.
+|   .env
+|   .gitignore
+|   config.py
+|   requirements.txt
+|   server.py              
++---app
+|   |   forms.py
+|   |   routes.py
+|   |   __init__.py
+|   |   
+|   +---static
+|   |   +---images
+|   |   |       ...
+|   |   |       
+|   |   +---js
+|   |   |       ...
+|   |   |       
+|   |   \---styles
+|   |           ...
+|   |           
+|   +---templates
+|   |   |   ...
+|   |   |   
+|   |   \---includes
+|   |           ...
+

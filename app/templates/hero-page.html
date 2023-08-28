@@ -5,16 +5,5 @@
 {% endblock %}
 {% block body %}
 <h1 class="text-center head-text">Induskriti</h1>
-<div class="col-md-6 mx-auto">
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    {% for category, message in messages %}
-    <div class="alert alert-{{ category }} text-center">
-        {{ message }}
-    </div>
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
-</div>
 
 {% endblock %}

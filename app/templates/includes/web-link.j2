@@ -1,9 +1,17 @@
-{% macro contact_link() %}
+{% macro contact_link(link="#") %}
 <p class="text-center fs-6 m-0">Or slide into our DMs: </p>
 <div class="d-flex flex-row justify-content-center">
-    <i class="bi bi-whatsapp m-1"></i>
-    <i class="bi bi-facebook m-1"></i>
-    <i class="bi bi-messenger m-1"></i>
-    <i class="bi bi-instagram m-1"></i>
+    <a href="{{ link }}">
+        <i class="bi bi-whatsapp m-1" style="font-size: 20px; color: green"></i>
+    </a>
+    <a href="{{ link }}">
+        <i class="bi bi-facebook m-1" style="font-size: 20px; color: #4267B2"></i>
+    </a>
+    <a href="{{ link }}">
+        <i class="bi bi-messenger m-1" style="font-size: 20px; color: #006AFF"></i>
+    </a>
+    <a href="https://www.instagram.com/induskriti/">
+        <i class="bi bi-instagram m-1" style="font-size: 20px; color: #C13584"></i>
+    </a>
 </div>
 {% endmacro %}

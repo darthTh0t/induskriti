@@ -12,7 +12,7 @@
 }
 
 .textarea {
-  height: 200px;
+  height: 150px;
 }
 
 .form-div {
@@ -20,8 +20,10 @@
 }
 
 .parent-box {
-  position: relative;
-  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  animation: scrollTestimonials 10s linear infinite;
 }
 
 .review-element:hover {
@@ -42,9 +44,30 @@
 }
 
 .review-box {
+  width: auto !important;
+  height: 50vh;
+  overflow: hidden;
+  position: relative;
   background: linear-gradient(207deg, #faf3f065, #d0cecde6);
+}
+
+#sidebar:hover #testimonial-list {
+  animation-play-state: paused;
 }
 
 i {
   cursor: pointer;
+}
+
+
+
+/* All animation functions */
+
+@keyframes scrollTestimonials {
+  0% {
+      transform: translateY(0);
+  }
+  100% {
+      transform: translateY(-100%); /* Adjust based on your testimonial item height */
+  }
 }

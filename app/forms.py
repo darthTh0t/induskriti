@@ -1,19 +1,28 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, TextAreaField
-from wtforms.validators import DataRequired, Email, Length, Regexp
+from wtforms import StringField, SubmitField, TextAreaField, HiddenField
+from wtforms.validators import DataRequired, Email, Length
 
 
 class ContactForm(FlaskForm):
-    __tablename__ = "contactuser"
+    """Contact Form"""
+
     name = StringField("Name", validators=[DataRequired()])
     phone_number = StringField(
-        "Contact",
-        validators=[
-            DataRequired(),
-            Length(min=10, max=10),
-            Regexp(regex="^[+-]?[0-9]$"),
-        ],
+        "Contact No.",
+        validators=[DataRequired(), Length(min=10, max=14)],
     )
-    email = StringField("Email Address", validators=[DataRequired(), Email()])
+    email = StringField(
+        "Email Address",
+        validators=[DataRequired(), Email(message=("Not a valid email address"))],
+    )
     comment = TextAreaField("Remarks (if any)")
+    # recaptcha = RecaptchaField()
+    # date = HiddenField()
     submit = SubmitField("Submit")
+
+
+class ReviewForm(FlaskForm):
+    """Testimonial/Review Form"""
+
+    name = StringField("Name", validators=[DataRequired()])
+    remark = TextAreaField("Your Feedback", validators=[DataRequired()])

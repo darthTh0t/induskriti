@@ -11,35 +11,77 @@ Contact Us
 
 
 {% block body %}
+
+<div class="col-md-6 mx-auto" id="flash-message">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }} text-center m-2">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+</div>
+
 <div class="container-lg d-flex justify-content-evenly py-3">
     <div class="form-div">
         <div class="contact-box">
             <h1 class="d-flex justify-content-center">Share Your Details!</h1>
         </div>
         <div class="form-section p-4 container-md border rounded-2">
-            <form action="" method="POST">
+            <form action="{{ url_for('contact') }}" method="POST">
                 {{ form.hidden_tag() }}
+                {{ form.csrf_token() }}
                 <!-- Form name -->
                 <div class="form-group">
                     {{ form.name.label(class="form-control-label") }}
                     {{ form.name(class="form-control form-control-md") }}
+                    {% if form.name.errors %}
+                    <ul class="errors">
+                        {% for error in form.name.errors %}
+                        <li class="text-danger">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 </div>
 
                 <!-- Form Phone number -->
                 <div class="form-group">
                     {{ form.phone_number.label(class="form-control-label")}}
                     {{ form.phone_number(class="form-control form-control-md")}}
+                    {% if form.phone_number.errors %}
+                    <ul class="errors">
+                        {% for error in form.phone_number.errors %}
+                        <li class="text-warning">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 </div>
                 <!-- Form email -->
                 <div class="form-group">
                     {{ form.email.label(class="form-control-label") }}
                     {{ form.email(class="form-control form-control-md") }}
+                    {% if form.email.errors %}
+                    <ul class="errors">
+                        {% for error in form.email.errors %}
+                        <li class="text-warning">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 </div>
 
                 <!-- Form Remark/Comment -->
                 <div class="form-group">
                     {{ form.comment.label(class="form-control-label") }}
                     {{ form.comment(class="form-control form-control-md textarea") }}
+                    {% if form.comment.errors %}
+                    <ul class="errors">
+                        {% for error in form.comment.errors %}
+                        <li class="text-danger">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 </div>
 
                 <!-- Form Submit -->
@@ -49,11 +91,14 @@ Contact Us
 
             </form>
         </div>
+        {% from 'includes/web-link.j2' import contact_link with context %}
+        {{ contact_link("#") }}
     </div>
 
-    <div class="sidebar border rounded-1 review-box">
+    <!-- Testimonials Sidebar -->
+    <div class="border rounded-1 review-box" id="sidebar">
         <h3 class="px-3 mt-2">Customer Reviews</h3>
-        <div class="parent-box">
+        <div class="parent-box" id="testimonial-list">
             {% from 'includes/testimonial.j2' import review with context %}
             {{ review() }}
             {{ review("Arnav") }}
@@ -64,7 +109,8 @@ Contact Us
     </div>
 </div>
 
-{% from 'includes/web-link.j2' import contact_link with context %}
-{{ contact_link() }}
+{% endblock %}
 
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/contact.js')}}"></script>
 {% endblock %}

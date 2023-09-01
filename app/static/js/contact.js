@@ -8,23 +8,9 @@ setTimeout(function() {
 
 
 
-// Infinite continuous vertical scrolling
-// const testimonialList = document.getElementById('testimonial-list');
-// const testimonials = document.querySelectorAll('#testimonial');
+// submit button actions
 
-// let currentIndex = 0;
-// const totalTestimonials = testimonials.length;
-
-// function cloneAndAppendTestimonial() {
-//     const currentTestimonial = testimonials[currentIndex];
-//     const clonedTestimonial = currentTestimonial.cloneNode(true);
-//     testimonialList.appendChild(clonedTestimonial);
-
-//     currentIndex++;
-//     if (currentIndex >= totalTestimonials) {
-//         currentIndex = 0;
-//     }
-// }
-
-// // Call the function to start the scrolling
-// setInterval(cloneAndAppendTestimonial, 10000); // Adjust the interval as needed (in milliseconds)
+const submitBtn = document.querySelector('.submit-btn')
+submitBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+})

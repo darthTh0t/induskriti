@@ -2,6 +2,7 @@ from flask import render_template, flash, redirect, url_for, request
 from flask import current_app as app
 from app.forms import ContactForm, LoginForm
 from .models import db, Customer
+from .data import testimonial_data
 #from app import login_manager
 
 
@@ -19,7 +20,8 @@ def gallery():
 
 @app.route("/about-us/")
 def about_us():
-    return render_template("about-us.html")
+    testimonials = testimonial_data
+    return render_template("about-us.html", testimonials=testimonials)
 
 
 @app.route("/contact/", methods=["GET", "POST"])

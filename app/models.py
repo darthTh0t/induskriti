@@ -18,14 +18,14 @@ class Customer(db.Model):
         return f'<Customer {self.name}>'
     
 
-class Testimonials(db.Model):
-    """Data Model for Testimonials"""
-    __tablename__ = 'testimonials'
-    id = db.Column('id', db.Integer, primary_key=True)
-    customer_name = db.Column('customer_name', db.String(30))
-    testi_text = db.Column('testi_text', db.Text)
-    rating = db.Column('rating', db.Float)
-    created_at = db.Column('created_at', db.DateTime, default=datetime.utcnow)
+#class Testimonials(db.Model):
+#    """Data Model for Testimonials"""
+#    __tablename__ = 'testimonials'
+#    id = db.Column('id', db.Integer, primary_key=True)
+#    customer_name = db.Column('customer_name', db.String(30))
+#    testi_text = db.Column('testi_text', db.Text)
+#    rating = db.Column('rating', db.Float)
+#    created_at = db.Column('created_at', db.DateTime, default=datetime.utcnow)
 
-    def __repr__(self):
-        return f'Testimonial by {self.customer_name}'
+#   def __repr__(self):
+#        return f'Testimonial by {self.customer_name}'

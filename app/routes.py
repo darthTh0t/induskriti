@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request
 from flask import current_app as app
 from app.forms import ContactForm, LoginForm
-from .models import db, Customer, Testimonials
+from .models import db, Customer
 #from app import login_manager
 
 
@@ -54,5 +54,5 @@ def contact():
             print(e)
             return redirect(url_for("contact"))
     
-    testimonials = Testimonials.query.all()
-    return render_template("contact.html", form=form, testimonials=testimonials)
+    #testimonials = Testimonials.query.all()
+    return render_template("contact.html", form=form)

@@ -57,3 +57,4 @@ def contact():
     
     #testimonials = Testimonials.query.all()
     return render_template("contact.html", form=form)
+

@@ -68,9 +68,12 @@ i {
   cursor: pointer;
 }
 
-.cust-title{
-
+/* Custom CSS */
+.form-control:focus {
+    border-color: #007bff; /* Change to your desired color */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Optional box shadow */
 }
+
 
 /* All animation functions */
 

@@ -1,0 +1,10 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.customer-table{
+	width: 50%;
+	margin: 3rem auto;
+}

@@ -1,3 +1,6 @@
-{% macro about_us() %}
-
+{% macro about_content(title, key) %}
+	<div class="first-box d-flex flex-wrap justify-content-center">
+		<h2 class="text-center font-weight-bolder"><u>{{ title }}</u></h2>
+		<p class="font-weight-light">{{ about_data.get(key) }}</p>
+	</div>
 {% endmacro %}

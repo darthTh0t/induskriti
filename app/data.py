@@ -1,4 +1,4 @@
-testimonials = { "description": "IndusKriti: A Tale of Artistry welcomes you to a world of curated and authentic\
+about_data = { "description": "IndusKriti: A Tale of Artistry welcomes you to a world of curated and authentic\
 handcrafted products. Immerse yourself in the beauty of Indian craftsmanship as we bring you a carefully selected\
 collection of decor, dining, garden, lighting, and more. Each piece is lovingly crafted by rural artisans from West\
 Bengal, using traditional techniques and a variety of materials, including terracotta, marble dust, jute, and ceramic.\
@@ -17,5 +17,5 @@ Discover the unique and enchanting creations that showcase the cultural heritage
 
   "footer": "By blending tradition with contemporary artistry, we envision IndusKriti as a symbol of excellence, where \
    every handcrafted piece tells a story and reflects the passion and skill of the artisans. We strive to become the \
-   go-to destination for those seeking unique, ethically crafted products that celebrate the rich tapestry of Indian \
+   go-to destination for those seeking unique, ethically crafted products that celebrate the rich tapestry of Indian \
    culture." }

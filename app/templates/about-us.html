@@ -12,16 +12,12 @@ About Us
 {% block body %}
 <h1 class="text-center fs-2 font-weight-bolder p-2">Induskriti</h1>
 <br>
+{% from 'includes/about.j2' import about_content with context %}
 <div class="container container-fluid parent-testi">
-	<div class="first-box d-flex flex-wrap justify-content-center">
-		<h2 class="text-center font-weight-bolder"><u>Who Are We?</u></h2>
-		<p class="font-weight-light">{{ testimonials.get("description") }}</p>
-	</div>
+	{{ about_content('Who Are We', 'description') }}
 	<br>
-	<h2 class="text-center font-weight-bolder">Our Mission</h2>
-	<p class="font-weight-light">{{ testimonials.get("mission") }}</p>
+	{{ about_content('Our Mission', 'mission') }}
 	<br>
-	<h2 class="text-center font-weight-bolder">Our Vision</h2>
-	<p class="font-weight-light">{{ testimonials.get("vision") }}</p>
+	{{ about_content('Our Vision', 'vision') }}
 </div>
 {% endblock %}

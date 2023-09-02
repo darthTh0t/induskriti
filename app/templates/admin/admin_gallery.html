@@ -11,6 +11,14 @@ Gallery Info
 {% block body %}
 <div class="container-fluid container d-flex flex-column" x-data="{ goBack: function() { window.history.back(); } }">
     <h2 class="text-center m-3">Admin Gallery</h2>
+    <form action="/admin-gallery/" method="POST">
+        {{ form.csrf_token() }}
+        <!-- Form File -->
+        {{ form.file_upload.label(class="form-control-label") }}
+        {{ form.file_upload(class="form-control form-control-md") }}
+        <!-- Form Submit -->
+        {{ form.submit_btn(class="btn btn-primary col-2 m-2 btn-md") }}
+    </form>
     <button class="btn btn-success btn-md back-btn" @click="goBack">
         <i class="bi bi-arrow-left">
             Back

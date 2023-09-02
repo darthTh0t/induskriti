@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Customer List</title>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='admin/styles/admin.css') }}">
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" defer ></script>
-	</head>
-	<body>
+{% extends 'admin_base.html' %}
+
+{% block title %}
+Customer Info
+{% endblock%}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='styles/admin.css') }}">
+{% endblock %}
+
+
+{% block body %}
+	<div class="d-flex flex-column justify-content-center" x-data="{ goBack: function() { window.history.back(); } }">
 		<h2 class="text-center m-3">Customer List</h2>
 		<table class="table table-striped table-hover table-responsive-md customer-table">
 			<thead>
@@ -32,5 +34,16 @@
 				{% endfor %}
 			</tbody>
 		</table>
-	</body>
-</html>
+		<button class="btn btn-success btn-md back-btn" @click="goBack">
+			<i class="bi bi-arrow-left">
+				Back
+			</i>
+		</button>
+	</div>
+
+	<!-- <script>
+		function goBack(){
+			window.history.back();
+		}
+	</script> -->
+{% endblock %}

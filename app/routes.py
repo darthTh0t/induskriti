@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request
 from flask import current_app as app
-from app.forms import ContactForm, LoginForm
+from app.forms import ContactForm
 from .models import db, Customer
 from .data import about_data
 #from app import login_manager
@@ -57,4 +57,3 @@ def contact():
     
     #testimonials = Testimonials.query.all()
     return render_template("contact.html", form=form)
-

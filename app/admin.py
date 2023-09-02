@@ -2,6 +2,7 @@
 
 from flask import Blueprint, render_template
 from .models import Customer
+from .forms import GalleryForm
 
 admin_page = Blueprint('admin', __name__, template_folder='templates/admin', static_folder='static/admin')
 
@@ -18,4 +19,5 @@ def customer_list():
 
 @admin_page.route('/admin-gallery/')
 def gallery_list():
+    form = GalleryForm()
     return render_template('admin_gallery.html')

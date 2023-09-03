@@ -1,6 +1,7 @@
 from app import db
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
 
 class Customer(db.Model):
@@ -19,14 +20,13 @@ class Customer(db.Model):
         return f'<Customer {self.name}>'
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
 
     """Data Model for User Login"""
     __tablename__ = 'admin_info'
     id = db.Column("id", db.Integer, primary_key=True)
     username = db.Column("username", db.String(64), index=True, unique=True)
-    password_hash = db.Column(db.String(128))
-    is_active = db.Column(db.Boolean, default=True) 
+    password_hash = db.Column(db.String)
 
     def set_password(self, password):
         self.password_hash=generate_password_hash(password)

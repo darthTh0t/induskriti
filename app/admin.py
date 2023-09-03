@@ -5,37 +5,38 @@ from flask import flash, redirect, url_for
 from .models import Customer, User
 from .forms import GalleryForm, LoginForm
 from app import db
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, login_required, logout_user
 
 admin_page = Blueprint('admin', __name__, template_folder='templates/admin', static_folder='static/admin')
 
-@admin_page.route('/login/', methods=['GET','POST'])
-def admin_login():
-    form=LoginForm()
-    next_url = request.form.get("next")
+@admin_page.route('/login/', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user is not None and user.check_password(form.password.data):
+        username = request.form['username']
+        password = request.form['password']
+        user = User.query.filter_by(username=username).first()
+        if user and user.check_password(password):
             login_user(user)
-            flash(f'Login Successful', 'success')
-            if next_url:
-                return redirect(next_url)
-            return redirect(url_for('admin.admin_dashboard'))
+            flash("Login Successful", "success")
+            return redirect(request.args.get('next') or url_for('admin.admin_dashboard'))
         else:
-            flash(f'Invalid Credentials', 'danger')
-    return render_template('admin/login.html', form=form)
+            flash("Invalid Credentials", "danger")
+            return redirect(url_for('admin.login'))
+    return render_template("admin/login.html", form=form)
 
 @admin_page.route('/logout/')
 @login_required
-def admin_logout():
+def logout():
     logout_user()
-    flash('You have been logged out', 'success')
-    return redirect(url_for('admin.admin_login()'))
+    flash("You have been logged out", "success")
+    return redirect(url_for('admin.login'))
+
 
 @admin_page.route('/dashboard/')
 @login_required
 def admin_dashboard():
-    return render_template('admin/dashboard.html')
+    return render_template('dashboard.html')
 
 
 @admin_page.route('/customer-list/')

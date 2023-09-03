@@ -8,7 +8,7 @@ from flask_login import LoginManager
 db = SQLAlchemy()
 migrate = Migrate()
 login_manager = LoginManager()
-login_manager.login_view = "admin.admin_login"
+login_manager.login_view = 'login'
 
 def create_app():
     app = Flask(__name__, instance_relative_config=False)
@@ -20,14 +20,13 @@ def create_app():
 
     from .models import User
     @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))
-
+    def user_loader(user_id):
+        return User.query.get(user_id)
 
     with app.app_context():
 
         from .admin import admin_page
-        app.register_blueprint(admin_page)
+        app.register_blueprint(admin_page, url_prefix='/admin')
 
         from . import routes
         #db.drop_all()

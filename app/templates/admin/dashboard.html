@@ -1,15 +1,35 @@
 {% extends 'admin_base.html' %}
-
 {% block title %}
-Admin Dashboard
+	Admin Dashboard
 {% endblock %}
-
+{% block head %}
+	<script type="text/javascript" src="{{ url_for('admin.static', filename='js/index.js')}}"></script>
+{% endblock %}
 {% block body %}
-	<div class="container-fluid d-flex flex-column">
-		<h1 class="text-center">Welcome To Admin Page</h1>
-		<div class="d-flex flex-column justify-content-center align-content-center">
-			<a href="{{ url_for('admin.customer_list')}}">Customer List</a>
-			<a href="{{ url_for('admin.gallery_list')}}">Gallery List</a>
-		</div>
+	<div class="col-md-6 mx-auto" id="flash-message">
+		{% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+			{% for category, message in messages %}
+				<div class="alert alert-{{ category }} text-center m-2">
+					{{ message }}
+				</div>
+			{% endfor%}
+		{% endif %}
+	{% endwith %}
+</div>
+<div class="container-fluid d-flex flex-column">
+	<h1 class="text-center">Welcome To Admin Page</h1>
+	<div class="d-flex flex-column justify-content-center align-content-center">
+		<a href="{{ url_for('admin.customer_list')}}">
+			<button class="btn btn-primary my-2">
+				Customer List
+			</button>
+		</a>
+		<a href="{{ url_for('admin.gallery_list')}}">
+			<button class="btn btn-primary my-2">
+				Gallery List
+			</button>
+		</a>
 	</div>
+</div>
 {% endblock %}

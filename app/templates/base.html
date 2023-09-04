@@ -32,7 +32,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="nav nav-pills d-flex align-items-center">
                     {% from 'includes/navbar.j2' import nav_link with context %}
-                    {{ nav_link('Gallery', 'gallery') }}
+                    {{ nav_link('Shop', 'shop.shop_base')}}
                     {{ nav_link('Contact', 'contact') }}
                     {{ nav_link('About Us', 'about_us') }}
                     <a href="{{ url_for('admin.login') }}" title="login">

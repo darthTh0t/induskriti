@@ -25,8 +25,11 @@ def create_app():
 
     with app.app_context():
 
-        from .admin import admin_page
+        from .blueprints.admin_page import admin_page
+        from .blueprints.shop_page import shop_page
+        
         app.register_blueprint(admin_page, url_prefix='/admin')
+        app.register_blueprint(shop_page, url_prefix='/shop')
 
         from . import routes
         #db.drop_all()

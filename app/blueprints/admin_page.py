@@ -1,9 +1,8 @@
 # adding an admin blueprint
 
-from flask import Blueprint, render_template, request
-from flask import flash, redirect, url_for
-from .models import Customer, User
-from .forms import GalleryForm, LoginForm
+from flask import Blueprint, render_template, request, flash, redirect, url_for
+from app.models import Customer, User
+from app.forms import GalleryForm, LoginForm
 from app import db
 from flask_login import login_user, login_required, logout_user
 
@@ -36,7 +35,7 @@ def logout():
 @admin_page.route('/dashboard/')
 @login_required
 def admin_dashboard():
-    return render_template('dashboard.html')
+    return render_template('admin/dashboard.html')
 
 
 @admin_page.route('/customer-list/')

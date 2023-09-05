@@ -10,4 +10,10 @@ Induskriti Shop
 
 {% block body %}
 <h2 class="text-center">Welcome to Induskriti Shop</h2>
+<div class="d-flex flex-row flex-wrap">
+	{% for image_url in image_urls%}
+		<img src="{{ image_url }}" alt="image">
+	{% endfor %}	
+</div>
+
 {% endblock %}

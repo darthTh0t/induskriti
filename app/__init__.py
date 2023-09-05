@@ -1,9 +1,14 @@
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from sqlalchemy import text, MetaData, Table
 from flask_login import LoginManager
+import firebase_admin
+from firebase_admin import credentials
 
+#get the firebase-credentials.json file
+credentials_path = os.path.join(os.path.dirname(__file__), '..', 'firebase-credentials.json')
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -13,6 +18,10 @@ login_manager.login_view = 'login'
 def create_app():
     app = Flask(__name__, instance_relative_config=False)
     app.config.from_object("config.Config")
+
+    #Initialise firebase admin SDK
+    cred = credentials.Certificate(credentials_path)
+    firebase_admin.initialize_app(cred)
     
     db.init_app(app)
     migrate.init_app(app, db)

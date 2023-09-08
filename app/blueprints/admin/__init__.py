@@ -6,7 +6,7 @@ from app.forms import GalleryForm, LoginForm
 from app import db
 from flask_login import login_user, login_required, logout_user
 
-admin_page = Blueprint('admin', __name__, template_folder='templates/admin', static_folder='static/admin')
+admin_page = Blueprint('admin', __name__, template_folder='templates/', static_folder='static/')
 
 @admin_page.route('/login/', methods=['GET', 'POST'])
 def login():
@@ -22,31 +22,31 @@ def login():
         else:
             flash("Invalid Credentials", "danger")
             return redirect(url_for('admin.login'))
-    return render_template("admin/login.html", form=form)
+    return render_template("login.html", form=form)
 
 @admin_page.route('/logout/')
 @login_required
 def logout():
     logout_user()
-    flash("You have been logged out", "success")
+    flash("You have been logged out", "info")
     return redirect(url_for('admin.login'))
 
 
 @admin_page.route('/dashboard/')
 @login_required
 def admin_dashboard():
-    return render_template('admin/dashboard.html')
+    return render_template('dashboard.html')
 
 
 @admin_page.route('/customer-list/')
 @login_required
 def customer_list():
     customers = Customer.query.all()
-    return render_template('admin/customer_details.html', customers=customers)
+    return render_template('customer_details.html', customers=customers)
 
 
 @admin_page.route('/admin-gallery/')
 @login_required
 def gallery_list():
     form = GalleryForm()
-    return render_template('admin/admin_gallery.html', form=form)
+    return render_template('admin_gallery.html', form=form)

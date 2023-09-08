@@ -1,9 +1,9 @@
-{% extends 'admin/admin_base.html' %}
+{% extends 'admin_base.html' %}
 {% block title %}
 	Admin Dashboard
 {% endblock %}
 {% block head %}
-	<script type="text/javascript" src="{{ url_for('admin.static', filename='js/index.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('admin.static', filename='js/index.js')}}" defer></script>
 {% endblock %}
 {% block body %}
 	<div class="col-md-6 mx-auto" id="flash-message">
@@ -18,8 +18,11 @@
 	{% endwith %}
 </div>
 <div class="container-fluid d-flex flex-column">
-	<h1 class="text-center">Welcome To Admin Page</h1>
-	<div class="d-flex flex-column justify-content-center align-content-center">
+	<h1 class="text-center">
+		<i class="bi bi-unlock-fill"></i>
+		Admin Page
+	</h1>
+	<div class="d-flex flex-row justify-content-evenly align-content-center m-5">
 		<a href="{{ url_for('admin.customer_list')}}">
 			<button class="btn btn-primary my-2">
 				Customer List
@@ -28,6 +31,20 @@
 		<a href="{{ url_for('admin.gallery_list')}}">
 			<button class="btn btn-primary my-2">
 				Gallery List
+			</button>
+		</a>
+
+		<a href="#">
+			<button class="btn btn-primary my-2">
+				Blog List
+			</button>
+		</a>
+		
+		<a href="{{ url_for('admin.logout') }}">
+			<button class="btn btn-success my-2">
+				<i class="bi bi-box-arrow-left">
+					Logout
+				</i>
 			</button>
 		</a>
 	</div>

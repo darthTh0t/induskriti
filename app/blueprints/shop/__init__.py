@@ -6,7 +6,7 @@ from app import db
 from datetime import timedelta
 
 
-shop_page = Blueprint('shop', __name__, template_folder='templates/shop', static_folder='static/shop')
+shop_page = Blueprint('shop', __name__, template_folder='templates/', static_folder='static/')
 
 def get_image_urls():
     # initializing firebase-admin SDK

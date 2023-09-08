@@ -11,7 +11,7 @@ shop_page = Blueprint('shop', __name__, template_folder='templates/', static_fol
 def get_image_urls():
     # initializing firebase-admin SDK
     if not firebase_admin._apps:
-        cred = credentials.Certificate('induskritistorage-firebase-adminsdk-b2qf0-4cef56dc0b.json')
+        cred = credentials.Certificate('induskritistorage-firebase-adminsdk-b2qf0-33fe67ff3b.json')
         firebase_admin.initialize_app(cred)
     # getting a reference to the Firebase Storage bucket
     bucket = storage.bucket(name="induskritistorage.appspot.com")

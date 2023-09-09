@@ -40,3 +40,8 @@ class GalleryForm(FlaskForm):
                 message="Invalid image file format. Please upload a valid image file."
             )])
     submit_btn = SubmitField("Upload")
+
+class BlogForm(FlaskForm):
+    blog_title = StringField('Blog Title', validators=[DataRequired(), Length(min=5, max=30)])
+    blog_body = TextAreaField('Please enter the blog text', validators=[DataRequired(), Length(min=100)])
+    blog_submit = SubmitField('Publish your Blog')

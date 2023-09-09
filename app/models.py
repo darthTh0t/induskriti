@@ -20,6 +20,9 @@ class Customer(db.Model):
         return f'<Customer {self.name}>'
 
 
+
+# Admin related models
+
 class User(db.Model, UserMixin):
 
     """Data Model for User Login"""
@@ -33,3 +36,15 @@ class User(db.Model, UserMixin):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+    
+
+
+class Blog(db.Model):
+    """Data Model for Blogs"""
+    __tablename__= 'blog_info'
+    id = db.Column("id", db.Integer, nullable=False, primary_key=True)
+    title = db.Column("title", db.String(64), nullable=False)
+    body = db.Column("body", db.Text)
+
+    def __repr__(self):
+        return f'<Blog {self.title}>'

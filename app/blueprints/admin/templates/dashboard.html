@@ -3,6 +3,7 @@
 	Admin Dashboard
 {% endblock %}
 {% block head %}
+	<link rel="stylesheet" href="{{ url_for('admin.static', filename='styles/admin.css') }}">
 	<script type="text/javascript" src="{{ url_for('admin.static', filename='js/index.js')}}" defer></script>
 {% endblock %}
 {% block body %}
@@ -17,7 +18,7 @@
 		{% endif %}
 	{% endwith %}
 </div>
-<div class="container-fluid d-flex flex-column">
+<div class="container-fluid d-flex flex-column mt-5">
 	<h1 class="text-center">
 		<i class="bi bi-unlock-fill"></i>
 		Admin Page
@@ -34,7 +35,7 @@
 			</button>
 		</a>
 
-		<a href="#">
+		<a href="{{ url_for('admin.blog_list') }}">
 			<button class="btn btn-primary my-2">
 				Blog List
 			</button>

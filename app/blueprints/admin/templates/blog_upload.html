@@ -1,0 +1,47 @@
+{% extends 'admin_base.html' %}
+
+{% block title %}
+Admin Blog
+{% endblock %}
+
+{% block head %}
+<script type="text/javascript" src="{{ url_for('admin.static', filename='js/index.js')}}" defer></script>
+{% endblock %}
+
+
+{% block body %}
+<div class="container container-fluid my-4" x-data="{ goBack: function() { window.history.back(); } }">
+
+    <div class="col-md-6 mx-auto" id="flash-message">
+		{% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+			{% for category, message in messages %}
+				<div class="alert alert-{{ category }} text-center m-2">
+					{{ message }}
+				</div>
+			{% endfor%}
+		{% endif %}
+	{% endwith %}
+    </div>
+
+    <h2 class="text-center">Admin Blog List</h2>
+    <form action="/admin-blog" method="POST">
+        {{ form.csrf_token() }}
+        {{ form.hidden_tag() }}
+        <!-- Blog Title -->
+        {{ form.blog_title.label(class="form-control-label") }}
+        {{ form.blog_title(class="form-control form-control-md", placeholder="Min Length= 5 letters") }}
+        <!-- Blog Body -->
+        {{ form.blog_body.label(class="form-control-label") }}
+        {{ form.blog_body(class="form-control form-control-md", placeholder="Min Length= 100 letters") }}
+        <!--Submit Button-->
+        {{ form.blog_submit(class="btn btn-primary col-2 my-2 btn-md") }}
+    </form>
+
+    <button class="btn btn-success btn-md back-btn" @click="goBack">
+        <i class="bi bi-arrow-left">
+            Back
+        </i>
+    </button>
+</div>
+{% endblock %}

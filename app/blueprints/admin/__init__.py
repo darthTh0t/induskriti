@@ -11,6 +11,7 @@ admin_page = Blueprint(
 )
 
 
+@admin_page.route("/", methods=['GET', 'POST'])
 @admin_page.route("/login/", methods=["GET", "POST"])
 def login():
     form = LoginForm()

@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, TextAreaField, FileField, PasswordField
+from wtforms import StringField, SubmitField, TextAreaField, PasswordField
 from wtforms.validators import DataRequired, Email, Length, Regexp
+from flask_wtf.file import FileField, FileAllowed, FileRequired
 
 
 class ContactForm(FlaskForm):
@@ -34,12 +35,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 class GalleryForm(FlaskForm):
-    file_name = StringField(validators=[DataRequired()])
-    file_upload = FileField(validators=[
-            Regexp(
-                r'^[^/\\]\.(jpg|jpeg|png|gif)$',
-                message="Invalid image file format. Please upload a valid image file."
-            )])
+    image = FileField(FileAllowed(['jpg', 'png', 'jpeg'], "Please upload Images Only"), validators=[FileRequired()])
     submit_btn = SubmitField("Upload")
 
 class BlogForm(FlaskForm):

@@ -59,12 +59,14 @@ def customer_list():
 def gallery_list():
     form = GalleryForm()
     if form.validate_on_submit():
-        img_name = request.form.get("file_name")
-        image = request.files.get("file_upload")
-        if image.filename:
-            image_upload(img_name, image)
-            flash(f"Image Uploaded Successfully", "success")
-            return redirect("admin.gallery_list")
+        image = form.image.data
+        if not image:
+            flash(f"No file selected for uploading")
+            return redirect(url_for("admin.gallery_list"))
+        else:
+            image_upload(image)
+            flash(f"Image Uploaded Successfully")
+            return redirect(url_for("admin.gallery_list"))
     return render_template("admin_gallery.html", form=form)
 
 

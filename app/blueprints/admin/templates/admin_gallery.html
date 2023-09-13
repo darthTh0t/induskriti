@@ -27,12 +27,9 @@ Gallery Info
     <h2 class="text-center m-3">Admin Gallery</h2>
     <form action="{{ url_for('admin.gallery_list') }}" method="POST" enctype="multipart/form-data">
         {{ form.csrf_token() }}
-        <!-- File Name -->
-        {{ form.file_name.label(class="form-control-label") }}
-        {{ form.file_name(class="form-control form-control-lg", placeholder="Enter File Name") }}
+        {{ form.hidden_tag() }}
         <!-- Form File -->
-        {{ form.file_upload.label(class="form-control-label") }}
-        {{ form.file_upload(class="form-control form-control-md") }}
+        {{ form.image(class="form-control form-control-md") }}
         <!-- Form Submit -->
         {{ form.submit_btn(class="btn btn-primary col-2 my-2 btn-md") }}
     </form>

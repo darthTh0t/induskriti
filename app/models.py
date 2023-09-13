@@ -48,3 +48,12 @@ class Blog(db.Model):
 
     def __repr__(self):
         return f'<Blog {self.title}>'
+
+
+
+class ImagePath(db.Model):
+    """Data Model to store image path"""
+    __tablename__= "image_path"
+    id = db.Column("id", db.Integer, nullable=False, primary_key=True)
+    img_name = db.Column("name", db.String(64), nullable=False)
+    img_hash = db.Column(db.String)

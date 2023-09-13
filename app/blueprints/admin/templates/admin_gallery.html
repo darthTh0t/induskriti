@@ -9,10 +9,27 @@ Gallery Info
 {% endblock %}
 
 {% block body %}
+
+<div class="col-md-6 mx-auto" id="flash-message">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} text-center m-2">
+                {{ message }}
+            </div>
+        {% endfor%}
+    {% endif %}
+{% endwith %}
+</div>
+
+
 <div class="container-fluid container d-flex flex-column" x-data="{ goBack: function() { window.history.back(); } }">
     <h2 class="text-center m-3">Admin Gallery</h2>
-    <form action="/admin-gallery/" method="POST">
+    <form action="{{ url_for('admin.gallery_list') }}" method="POST" enctype="multipart/form-data">
         {{ form.csrf_token() }}
+        <!-- File Name -->
+        {{ form.file_name.label(class="form-control-label") }}
+        {{ form.file_name(class="form-control form-control-lg", placeholder="Enter File Name") }}
         <!-- Form File -->
         {{ form.file_upload.label(class="form-control-label") }}
         {{ form.file_upload(class="form-control form-control-md") }}

@@ -34,6 +34,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
 
 class GalleryForm(FlaskForm):
+    file_name = StringField(validators=[DataRequired()])
     file_upload = FileField(validators=[
             Regexp(
                 r'^[^/\\]\.(jpg|jpeg|png|gif)$',

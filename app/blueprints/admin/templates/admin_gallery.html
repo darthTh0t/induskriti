@@ -11,7 +11,7 @@ Gallery Info
 {% block body %}
 <div class="container-fluid container d-flex flex-column" x-data="{ goBack: function() { window.history.back(); } }">
     <h2 class="text-center m-3">Admin Gallery</h2>
-    <form action="/admin-gallery/" method="POST">
+    <form method="POST">
         {{ form.csrf_token() }}
         <!-- Form File -->
         {{ form.file_upload.label(class="form-control-label") }}
@@ -24,5 +24,8 @@ Gallery Info
             Back
         </i>
     </button>
+    <a href="{{ url_for('admin.logout') }}">
+        <button type="logout">Logout</button>
+    </a>
 </div>
 {% endblock %}

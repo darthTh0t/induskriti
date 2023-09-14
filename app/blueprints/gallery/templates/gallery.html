@@ -12,13 +12,9 @@ Induskriti - Gallery
 
 {% block body %}
 <h1 class="text-center">Induskriti Gallery</h1>
-<div class="container-fluid container">
+<div class="container-fluid container" id="image-container">
     {% for image in image_urls %}
-        <img src="{{ image }}" alt="image" width="20%" height="20%">
+    <img src="{{ image }}" alt="image" class="resized-img">
     {% endfor %}
 </div>
-<script>
-    const imageUrls = `{{ image_urls|tojson }}`
-    console.log(JSON.parse(imageUrls))
-</script>
 {% endblock %}

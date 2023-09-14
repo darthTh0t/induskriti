@@ -6,3 +6,14 @@
   font-size: 2rem;
   font-family: "Montserrat", sans-serif;
 }
+
+.resized-img{
+  width:18%;
+  height:auto;
+  margin: auto 2%;
+}
+
+.resized-img:hover{
+  transform: scale(1.25);
+  cursor: pointer;
+}

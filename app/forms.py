@@ -19,24 +19,3 @@ class ContactForm(FlaskForm):
     # recaptcha = RecaptchaField()
     # date = HiddenField()
     submit = SubmitField("Submit")
-
-
-
-
-
-# Admin Related Forms
-
-class LoginForm(FlaskForm):
-    """Login Form"""
-
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Login')
-
-class GalleryForm(FlaskForm):
-    file_upload = FileField(validators=[
-            Regexp(
-                r'^[^/\\]\.(jpg|jpeg|png|gif)$',
-                message="Invalid image file format. Please upload a valid image file."
-            )])
-    submit_btn = SubmitField("Upload")

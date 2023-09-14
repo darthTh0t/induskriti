@@ -10,7 +10,7 @@ Customer Info
 
 
 {% block body %}
-	<div class="d-flex flex-column justify-content-center" x-data="{ goBack: function() { window.history.back(); } }">
+	<div class="d-flex flex-column justify-content-center" x-data="{ goBack: function() { window.location.href = '{{url_for('admin.admin_dashboard')}}' } }">
 		<h2 class="text-center m-3">Customer List</h2>
 		<table class="table table-striped table-hover table-responsive-md customer-table">
 			<thead>

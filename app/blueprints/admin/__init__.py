@@ -1,13 +1,15 @@
 # adding an admin blueprint
 
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from app.models import Customer, User
-from app.forms import GalleryForm, LoginForm
-from app import db
+from app.models import Customer
+from .models import User, ImageHash
+from .forms import GalleryForm, LoginForm
+from .firebase import File
 from flask_login import login_user, login_required, logout_user
 
 admin_page = Blueprint('admin', __name__, template_folder='templates/', static_folder='static/')
 
+@admin_page.route("/", methods=['GET', 'POST'])
 @admin_page.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -45,8 +47,19 @@ def customer_list():
     return render_template('customer_details.html', customers=customers)
 
 
-@admin_page.route('/admin-gallery/')
+@admin_page.route('/admin-gallery/', methods=['GET', 'POST'])
 @login_required
 def gallery_list():
     form = GalleryForm()
-    return render_template('admin_gallery.html', form=form)
+    if form.validate_on_submit():
+        image = form.image.data
+        if not image:
+            flash(f"No file selected for uploading")
+            return redirect(url_for("admin.gallery_list"))
+        else:
+            File().image_upload(image)
+            flash(f"Image Uploaded Successfully", "success")
+            return redirect(url_for("admin.gallery_list"))
+    
+    image_info = ImageHash.query.all()
+    return render_template('admin_gallery.html', form=form, image_info=image_info)

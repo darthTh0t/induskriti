@@ -18,18 +18,3 @@ class Customer(db.Model):
 
     def __repr__(self):
         return f'<Customer {self.name}>'
-
-
-class User(db.Model, UserMixin):
-
-    """Data Model for User Login"""
-    __tablename__ = 'admin_info'
-    id = db.Column("id", db.Integer, primary_key=True)
-    username = db.Column("username", db.String(64), index=True, unique=True)
-    password_hash = db.Column(db.String)
-
-    def set_password(self, password):
-        self.password_hash=generate_password_hash(password)
-
-    def check_password(self, password):
-        return check_password_hash(self.password_hash, password)

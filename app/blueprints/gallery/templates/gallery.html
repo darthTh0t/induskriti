@@ -14,7 +14,9 @@ Induskriti - Gallery
 <h1 class="text-center">Induskriti Gallery</h1>
 <div class="container-fluid container" id="image-container">
     {% for image in image_urls %}
-    <img src="{{ image }}" alt="image" class="resized-img">
+        <button data-bs-toggle="modal" data-bs-target="image-info">
+            <img src="{{ image }}" alt="image" class="resized-img">
+        </button>
     {% endfor %}
 </div>
 {% endblock %}
